@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaleco Médico Exclusivo - MediStyle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #ffffff;
+            --accent: #c9a961;
+            --text: #2c2c2c;
+            --text-light: #666666;
+            --bg: #fafafa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text);
+            background: var(--secondary);
+            line-height: 1.7;
+        }
+        
+        .header-editorial {
+            border-bottom: 2px solid var(--primary);
+            padding: 30px 0;
+            position: sticky;
+            top: 0;
+            background: var(--secondary);
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-editorial {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+        
+        .product-detail-container {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 60px;
+        }
+        
+        .breadcrumb {
+            margin-bottom: 40px;
+            font-size: 14px;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+        
+        .breadcrumb a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+        
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+        
+        .product-images {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .main-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+        
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .thumbnail {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        
+        .thumbnail:hover {
+            border-color: var(--accent);
+        }
+        
+        .product-info-detail h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        
+        .product-price-detail {
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 40px;
+        }
+        
+        .product-description {
+            font-size: 18px;
+            line-height: 1.9;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+        
+        .product-features {
+            margin-bottom: 40px;
+        }
+        
+        .product-features ul {
+            list-style: none;
+        }
+        
+        .product-features li {
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+        }
+        
+        .product-features i {
+            color: var(--accent);
+        }
+        
+        .size-selector {
+            margin-bottom: 40px;
+        }
+        
+        .size-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .size-option {
+            padding: 15px 30px;
+            border: 2px solid var(--text-light);
+            background: var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .size-option.selected {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: var(--secondary);
+        }
+        
+        .btn-add-cart {
+            width: 100%;
+            padding: 20px;
+            background: var(--primary);
+            color: var(--secondary);
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .btn-add-cart:hover {
+            background: var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            .product-detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-editorial">
+        <div class="header-content">
+            <div class="logo-editorial">MediStyle</div>
+            <nav>
+                <a href="modelo-7-magazine-style.html" style="color: var(--text); text-decoration: none;">Voltar</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="product-detail-container">
+        <div class="breadcrumb">
+            <a href="modelo-7-magazine-style.html">Início</a> / 
+            <a href="modelo-7-magazine-style.html">Produtos</a> / 
+            <span>Jaleco Médico Exclusivo</span>
+        </div>
+        
+        <div class="product-detail-grid">
+            <div class="product-images">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80" alt="Jaleco Médico Exclusivo" class="main-image" id="mainImage">
+                <div class="thumbnail-grid">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=200&q=80" alt="Vista 1" class="thumbnail" onclick="changeImage(this.src)">
+                    <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=200&q=80" alt="Vista 2" class="thumbnail" onclick="changeImage(this.src)">
+                    <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=200&q=80" alt="Vista 3" class="thumbnail" onclick="changeImage(this.src)">
+                    <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=200&q=80" alt="Vista 4" class="thumbnail" onclick="changeImage(this.src)">
+                </div>
+            </div>
+            
+            <div class="product-info-detail">
+                <h1>Jaleco Médico Exclusivo</h1>
+                <div class="product-price-detail">R$ 299,90</div>
+                
+                <p class="product-description">
+                    Jaleco médico exclusivo desenvolvido com os melhores tecidos e acabamentos premium. Design sofisticado que combina elegância e funcionalidade, perfeito para profissionais que buscam o melhor em qualidade e estilo.
+                </p>
+                
+                <div class="product-features">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Tecido premium de alta qualidade</li>
+                        <li><i class="fas fa-check-circle"></i> Bolsos estratégicos e funcionais</li>
+                        <li><i class="fas fa-check-circle"></i> Corte exclusivo e moderno</li>
+                        <li><i class="fas fa-check-circle"></i> Acabamento impecável</li>
+                        <li><i class="fas fa-check-circle"></i> Tamanhos do P ao GG</li>
+                    </ul>
+                </div>
+                
+                <div class="size-selector">
+                    <label style="display: block; margin-bottom: 15px; font-weight: 600; letter-spacing: 1px;">Tamanho</label>
+                    <div class="size-options">
+                        <div class="size-option" onclick="selectSize(this)">P</div>
+                        <div class="size-option selected" onclick="selectSize(this)">M</div>
+                        <div class="size-option" onclick="selectSize(this)">G</div>
+                        <div class="size-option" onclick="selectSize(this)">GG</div>
+                    </div>
+                </div>
+                
+                <button class="btn-add-cart">Adicionar ao Carrinho</button>
+                <button class="btn-add-cart" style="background: transparent; color: var(--primary); border: 2px solid var(--primary);">Comprar Agora</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src.replace('w=200', 'w=800');
+        }
+        
+        function selectSize(element) {
+            document.querySelectorAll('.size-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+    </script>
+</body>
+</html>
+

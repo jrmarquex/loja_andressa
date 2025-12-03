@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magazine Style - Roupas Profissionais Médicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #ffffff;
+            --accent: #c9a961;
+            --text: #2c2c2c;
+            --text-light: #666666;
+            --bg: #fafafa;
+            --border: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text);
+            background: var(--secondary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Header Editorial */
+        .header-editorial {
+            border-bottom: 2px solid var(--primary);
+            padding: 30px 0;
+            position: sticky;
+            top: 0;
+            background: var(--secondary);
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-editorial {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+        
+        .nav-editorial {
+            display: flex;
+            gap: 50px;
+            list-style: none;
+        }
+        
+        .nav-editorial a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-editorial a:hover {
+            color: var(--accent);
+        }
+        
+        .header-actions-editorial {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .header-actions-editorial i {
+            font-size: 18px;
+            color: var(--text);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .header-actions-editorial i:hover {
+            color: var(--accent);
+        }
+        
+        /* Hero Editorial */
+        .hero-editorial {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1400&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--secondary);
+            margin-bottom: 100px;
+        }
+        
+        .hero-content-editorial {
+            max-width: 900px;
+            padding: 0 40px;
+        }
+        
+        .hero-subtitle-editorial {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-title-editorial {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 96px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            letter-spacing: -2px;
+        }
+        
+        .hero-description-editorial {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn-editorial {
+            display: inline-block;
+            padding: 18px 50px;
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-editorial:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        /* Editorial Grid */
+        .editorial-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px 100px;
+        }
+        
+        .section-header-editorial {
+            text-align: center;
+            margin-bottom: 80px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section-title-editorial {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        .section-subtitle-editorial {
+            font-size: 18px;
+            color: var(--text-light);
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Magazine Grid */
+        .magazine-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        
+        .featured-product {
+            position: relative;
+            overflow: hidden;
+            background: var(--bg);
+        }
+        
+        .featured-product img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .featured-product:hover img {
+            transform: scale(1.05);
+        }
+        
+        .featured-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 60px 40px 40px;
+            color: var(--secondary);
+        }
+        
+        .featured-category {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .featured-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .featured-price {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .products-editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .product-editorial {
+            background: var(--bg);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-editorial:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image-editorial {
+            width: 100%;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: var(--bg);
+        }
+        
+        .product-image-editorial img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .product-editorial:hover .product-image-editorial img {
+            transform: scale(1.1);
+        }
+        
+        .product-info-editorial {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .product-category-editorial {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+        
+        .product-name-editorial {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .product-price-editorial {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        /* Story Section */
+        .story-section {
+            background: var(--bg);
+            padding: 100px 60px;
+            margin: 100px 0;
+        }
+        
+        .story-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .story-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        
+        .story-text {
+            font-size: 20px;
+            line-height: 1.9;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+        
+        /* Footer Editorial */
+        footer {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 80px 60px 40px;
+        }
+        
+        .footer-editorial {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-brand-editorial {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        
+        .footer-text-editorial {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.9;
+            margin-bottom: 30px;
+        }
+        
+        .footer-title-editorial {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .footer-links-editorial {
+            list-style: none;
+        }
+        
+        .footer-links-editorial li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links-editorial a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links-editorial a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom-editorial {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 1024px) {
+            .magazine-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-editorial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-editorial {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-editorial {
+                display: none;
+            }
+            
+            .hero-title-editorial {
+                font-size: 56px;
+            }
+            
+            .products-editorial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-editorial {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-editorial">
+        <div class="header-content">
+            <div class="logo-editorial">MediStyle</div>
+            <nav>
+                <ul class="nav-editorial">
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Coleções</a></li>
+                    <li><a href="#">Editorial</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions-editorial">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Editorial -->
+    <section class="hero-editorial">
+        <div class="hero-content-editorial">
+            <div class="hero-subtitle-editorial">Nova Coleção 2024</div>
+            <h1 class="hero-title-editorial">Elegância Profissional</h1>
+            <p class="hero-description-editorial">
+                Descubra nossa linha exclusiva de roupas profissionais que combinam 
+                sofisticação, conforto e funcionalidade para profissionais da saúde.
+            </p>
+            <a href="#" class="btn-editorial">Explorar Coleção</a>
+        </div>
+    </section>
+    
+    <!-- Editorial Section -->
+    <section class="editorial-section">
+        <div class="section-header-editorial">
+            <h2 class="section-title-editorial">Produtos em Destaque</h2>
+            <p class="section-subtitle-editorial">
+                Uma seleção cuidadosa de peças que definem o padrão de excelência
+            </p>
+        </div>
+        
+        <div class="magazine-grid">
+            <a href="modelo-7-produto-1.html" class="featured-product" style="text-decoration: none; color: inherit;">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80" alt="Produto Destaque">
+                <div class="featured-content">
+                    <div class="featured-category">Jalecos Premium</div>
+                    <h3 class="featured-title">Jaleco Médico Exclusivo</h3>
+                    <div class="featured-price">R$ 299,90</div>
+                </div>
+            </a>
+            <div>
+                <a href="modelo-7-produto-2.html" class="product-editorial" style="text-decoration: none; color: inherit;">
+                    <div class="product-image-editorial">
+                        <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=600&q=80" alt="Uniforme">
+                    </div>
+                    <div class="product-info-editorial">
+                        <div class="product-category-editorial">Uniformes</div>
+                        <h3 class="product-name-editorial">Uniforme Enfermagem</h3>
+                        <div class="product-price-editorial">R$ 189,90</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="products-editorial-grid">
+            <a href="modelo-7-produto-3.html" class="product-editorial" style="text-decoration: none; color: inherit;">
+                <div class="product-image-editorial">
+                    <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="Biomédico">
+                </div>
+                <div class="product-info-editorial">
+                    <div class="product-category-editorial">Jalecos</div>
+                    <h3 class="product-name-editorial">Jaleco Biomédico</h3>
+                    <div class="product-price-editorial">R$ 219,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-7-produto-4.html" class="product-editorial" style="text-decoration: none; color: inherit;">
+                <div class="product-image-editorial">
+                    <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&q=80" alt="Avental">
+                </div>
+                <div class="product-info-editorial">
+                    <div class="product-category-editorial">Aventais</div>
+                    <h3 class="product-name-editorial">Avental Hospitalar</h3>
+                    <div class="product-price-editorial">R$ 159,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-7-produto-5.html" class="product-editorial" style="text-decoration: none; color: inherit;">
+                <div class="product-image-editorial">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Cirúrgica">
+                </div>
+                <div class="product-info-editorial">
+                    <div class="product-category-editorial">Cirúrgicas</div>
+                    <h3 class="product-name-editorial">Roupa Cirúrgica</h3>
+                    <div class="product-price-editorial">R$ 279,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-7-produto-6.html" class="product-editorial" style="text-decoration: none; color: inherit;">
+                <div class="product-image-editorial">
+                    <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&q=80" alt="Veterinário">
+                </div>
+                <div class="product-info-editorial">
+                    <div class="product-category-editorial">Veterinários</div>
+                    <h3 class="product-name-editorial">Jaleco Veterinário</h3>
+                    <div class="product-price-editorial">R$ 239,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-7-produto-7.html" class="product-editorial" style="text-decoration: none; color: inherit;">
+                <div class="product-image-editorial">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80" alt="Dentista">
+                </div>
+                <div class="product-info-editorial">
+                    <div class="product-category-editorial">Dentistas</div>
+                    <h3 class="product-name-editorial">Jaleco Dentista</h3>
+                    <div class="product-price-editorial">R$ 229,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-7-produto-8.html" class="product-editorial" style="text-decoration: none; color: inherit;">
+                <div class="product-image-editorial">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" alt="Pijama">
+                </div>
+                <div class="product-info-editorial">
+                    <div class="product-category-editorial">Pijamas</div>
+                    <h3 class="product-name-editorial">Pijama Cirúrgico</h3>
+                    <div class="product-price-editorial">R$ 169,90</div>
+                </div>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-content">
+            <h2 class="story-title">Nossa História</h2>
+            <p class="story-text">
+                Há mais de uma década, dedicamos nossa paixão a criar roupas profissionais 
+                que não apenas atendem aos mais altos padrões de qualidade, mas também 
+                refletem a dedicação e o profissionalismo daqueles que as vestem. Cada peça 
+                é cuidadosamente projetada pensando no conforto, na durabilidade e no estilo 
+                que nossos clientes merecem.
+            </p>
+            <a href="#" class="btn-editorial" style="color: var(--primary); border-color: var(--primary);">
+                Conheça Mais
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-editorial">
+            <div>
+                <div class="footer-brand-editorial">MediStyle</div>
+                <p class="footer-text-editorial">
+                    Especialistas em roupas profissionais para área médica. 
+                    Qualidade, conforto e elegância em cada peça.
+                </p>
+            </div>
+            <div>
+                <h4 class="footer-title-editorial">Produtos</h4>
+                <ul class="footer-links-editorial">
+                    <li><a href="#">Jalecos</a></li>
+                    <li><a href="#">Uniformes</a></li>
+                    <li><a href="#">Aventais</a></li>
+                    <li><a href="#">Roupas Cirúrgicas</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title-editorial">Empresa</h4>
+                <ul class="footer-links-editorial">
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title-editorial">Suporte</h4>
+                <ul class="footer-links-editorial">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Trocas</a></li>
+                    <li><a href="#">Frete</a></li>
+                    <li><a href="#">Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-editorial">
+            <p>&copy; 2024 MediStyle. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

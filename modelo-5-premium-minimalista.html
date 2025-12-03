@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Minimalista - Roupas Profissionais Médicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #ffffff;
+            --accent: #2563eb;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+            --bg-light: #f9fafb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--primary);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Header Minimalista */
+        .header-minimal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 48px;
+            align-items: center;
+        }
+        
+        .nav-menu a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 15px;
+            letter-spacing: 0.2px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        
+        .header-icon {
+            color: var(--primary);
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .header-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Hero Section */
+        .hero-large {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        
+        .hero-image {
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-light);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            background: var(--secondary);
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--bg-light);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            width: fit-content;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+        
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: var(--primary);
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* Products Grid Minimalista */
+        .products-section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .products-grid-minimal {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px 40px;
+        }
+        
+        .product-card-minimal {
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .product-card-minimal a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .product-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-light);
+            margin-bottom: 24px;
+            aspect-ratio: 3/4;
+        }
+        
+        .product-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .product-card-minimal:hover .product-image-wrapper img {
+            transform: scale(1.08);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 6px 12px;
+            background: var(--secondary);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .product-info {
+            text-align: center;
+        }
+        
+        .product-category {
+            font-size: 12px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .product-name {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+        
+        .product-price {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Categories Banner */
+        .categories-banner {
+            padding: 80px 40px;
+            background: var(--bg-light);
+        }
+        
+        .categories-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .category-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--secondary);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .category-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .category-name {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        
+        /* Footer Minimalista */
+        footer {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 80px 40px 40px;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            border-color: var(--secondary);
+        }
+        
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 1024px) {
+            .hero-large {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-grid-minimal {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px 30px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 42px;
+            }
+            
+            .products-grid-minimal {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-minimal">
+        <div class="header-container">
+            <a href="#" class="logo">MediStyle</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Produtos</a></li>
+                    <li><a href="#">Categorias</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <i class="fas fa-search header-icon"></i>
+                <i class="fas fa-shopping-bag header-icon"></i>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-large">
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999e8?w=1200&q=80" alt="Roupas Médicas Profissionais">
+        </div>
+        <div class="hero-content">
+            <span class="hero-badge">Nova Coleção 2024</span>
+            <h1 class="hero-title">Profissionalismo em Cada Detalhe</h1>
+            <p class="hero-description">
+                Descubra nossa linha exclusiva de roupas profissionais para área médica. 
+                Conforto, qualidade e estilo em um só lugar.
+            </p>
+            <a href="#" class="btn-primary">
+                Explorar Coleção
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Categories -->
+    <section class="categories-banner">
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">👨‍⚕️</div>
+                <div class="category-name">Médicos</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">👩‍⚕️</div>
+                <div class="category-name">Enfermeiros</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🔬</div>
+                <div class="category-name">Biomédicos</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🦷</div>
+                <div class="category-name">Dentistas</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="section-header">
+            <h2 class="section-title">Produtos em Destaque</h2>
+            <p class="section-subtitle">
+                Seleção cuidadosa de roupas profissionais que combinam estilo e funcionalidade
+            </p>
+        </div>
+        
+        <div class="products-grid-minimal">
+            <a href="modelo-5-produto-1.html" class="product-card-minimal">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80" alt="Jaleco Médico Premium">
+                    <span class="product-badge">Novo</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Jalecos</div>
+                    <h3 class="product-name">Jaleco Médico Premium</h3>
+                    <div class="product-price">R$ 249,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-5-produto-2.html" class="product-card-minimal">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Uniforme Enfermagem">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Uniformes</div>
+                    <h3 class="product-name">Uniforme Enfermagem</h3>
+                    <div class="product-price">R$ 189,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-5-produto-3.html" class="product-card-minimal">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=800&q=80" alt="Jaleco Biomédico">
+                    <span class="product-badge">Mais Vendido</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Jalecos</div>
+                    <h3 class="product-name">Jaleco Biomédico</h3>
+                    <div class="product-price">R$ 219,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-5-produto-4.html" class="product-card-minimal">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80" alt="Avental Hospitalar">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Aventais</div>
+                    <h3 class="product-name">Avental Hospitalar</h3>
+                    <div class="product-price">R$ 159,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-5-produto-5.html" class="product-card-minimal">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&q=80" alt="Roupa Cirúrgica">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Cirúrgicas</div>
+                    <h3 class="product-name">Roupa Cirúrgica</h3>
+                    <div class="product-price">R$ 279,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-5-produto-6.html" class="product-card-minimal">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=800&q=80&auto=format&fit=crop&crop=center" alt="Jaleco Veterinário">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Veterinários</div>
+                    <h3 class="product-name">Jaleco Veterinário</h3>
+                    <div class="product-price">R$ 239,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-5-produto-7.html" class="product-card-minimal">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&q=80" alt="Jaleco Dentista">
+                    <span class="product-badge">Oferta</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Dentistas</div>
+                    <h3 class="product-name">Jaleco Dentista</h3>
+                    <div class="product-price">R$ 229,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-5-produto-8.html" class="product-card-minimal">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80" alt="Pijama Cirúrgico">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Pijamas</div>
+                    <h3 class="product-name">Pijama Cirúrgico</h3>
+                    <div class="product-price">R$ 169,90</div>
+                </div>
+            </a>
+            
+            <a href="modelo-5-produto-9.html" class="product-card-minimal">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=80" alt="Calça Profissional">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Calças</div>
+                    <h3 class="product-name">Calça Profissional</h3>
+                    <div class="product-price">R$ 139,90</div>
+                </div>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-brand">MediStyle</div>
+                <p class="footer-description">
+                    Especialistas em roupas profissionais para área médica. 
+                    Qualidade, conforto e estilo em cada peça.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Produtos</h4>
+                <ul>
+                    <li><a href="#">Jalecos</a></li>
+                    <li><a href="#">Uniformes</a></li>
+                    <li><a href="#">Aventais</a></li>
+                    <li><a href="#">Roupas Cirúrgicas</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Suporte</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Trocas</a></li>
+                    <li><a href="#">Frete</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MediStyle. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

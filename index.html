@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Modelos - Loja Virtual Profissional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            min-height: 100vh;
+            padding: 60px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .model-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .model-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .model-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .model-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .model-preview {
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            background: #1e293b;
+        }
+        
+        .model-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            display: block;
+        }
+        
+        .model-card:hover .model-preview img {
+            transform: scale(1.05);
+        }
+        
+        .model-preview::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
+            pointer-events: none;
+        }
+        
+        .model-card:hover .model-preview::after {
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 100%);
+        }
+        
+        /* Fallback para quando a imagem não carregar */
+        .model-preview .fallback-icon {
+            display: none;
+        }
+        
+        .model-preview img[src=""],
+        .model-preview img:not([src]) {
+            display: none;
+        }
+        
+        .model-preview img[src=""] + .fallback-icon,
+        .model-preview img:not([src]) + .fallback-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #818cf8;
+            font-size: 3em;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+        }
+        
+        .model-info {
+            padding: 32px;
+        }
+        
+        .model-number {
+            color: #818cf8;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+        
+        .model-title {
+            font-size: 1.8em;
+            color: white;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .model-description {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95em;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        
+        .preview-icons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .icon-tag {
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            color: #c7d2fe;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .model-card:hover .icon-tag {
+            background: rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        
+        .model-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            width: 100%;
+            justify-content: center;
+            position: relative;
+            overflow: visible;
+        }
+        
+        .model-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .model-link:hover::before {
+            left: 100%;
+        }
+        
+        .model-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+        }
+        
+        .model-link i {
+            transition: transform 0.3s ease;
+            display: inline-block;
+            font-size: 1em;
+            margin-left: 8px;
+        }
+        
+        .model-link:hover i {
+            transform: translateX(4px);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .subtitle {
+                font-size: 1.1em;
+            }
+            
+            .models-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .model-preview {
+                height: 220px;
+            }
+            
+            .model-link i {
+                display: inline-block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                font-size: 0.9em !important;
+                width: auto !important;
+                height: auto !important;
+                margin-left: 8px !important;
+                font-family: "Font Awesome 6 Free" !important;
+                font-weight: 900 !important;
+                line-height: 1 !important;
+            }
+            
+            /* Garantir que o ícone apareça mesmo se Font Awesome não carregar */
+            .model-link i.fa-arrow-right::before {
+                content: "\f061" !important;
+                font-family: "Font Awesome 6 Free" !important;
+                font-weight: 900 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h1>Catálogo de Modelos</h1>
+            <p class="subtitle">Oi Prima, pensei em um desses modelos para o seu site, veja o que você acha, e me informa no whatsapp qual você prefere</p>
+        </div>
+        
+        <div class="models-grid">
+            <!-- Modelo 1 -->
+            <div class="model-card">
+                <div class="model-preview">
+                    <img src="preview-modelo-1.jpg" alt="Preview Modelo 1 - Clothing Category" onerror="this.onerror=null; this.style.display='none';">
+                    <div class="fallback-icon">👔</div>
+                </div>
+                <div class="model-info">
+                    <div class="model-number">Modelo 1</div>
+                    <h2 class="model-title">Clothing Category</h2>
+                    <p class="model-description">Design clássico com foco em categorias de produtos e navegação intuitiva.</p>
+                    <div class="preview-icons">
+                        <span class="icon-tag">Categorias</span>
+                        <span class="icon-tag">Grid</span>
+                    </div>
+                    <a href="Clothing Category _ Shopkeeper Main Demo.html" class="model-link">
+                        Visualizar Modelo
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Modelo 3 -->
+            <div class="model-card">
+                <div class="model-preview">
+                    <img src="preview-modelo-3.jpg" alt="Preview Modelo 3 - Fashion Minimal" onerror="this.onerror=null; this.style.display='none';">
+                    <div class="fallback-icon">✨</div>
+                </div>
+                <div class="model-info">
+                    <div class="model-number">Modelo 3</div>
+                    <h2 class="model-title">Fashion Minimal</h2>
+                    <p class="model-description">Design minimalista e elegante, perfeito para destacar produtos premium.</p>
+                    <div class="preview-icons">
+                        <span class="icon-tag">Minimalista</span>
+                        <span class="icon-tag">Elegante</span>
+                    </div>
+                    <a href="Fashion shop minimal – Just another WordPress site.html" class="model-link">
+                        Visualizar Modelo
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Modelo 4 -->
+            <div class="model-card">
+                <div class="model-preview">
+                    <img src="preview-modelo-4.jpg" alt="Preview Modelo 4 - Creative Fashion" onerror="this.onerror=null; this.style.display='none';">
+                    <div class="fallback-icon">🎨</div>
+                </div>
+                <div class="model-info">
+                    <div class="model-number">Modelo 4</div>
+                    <h2 class="model-title">Creative Fashion</h2>
+                    <p class="model-description">Layout criativo com imagens grandes e apresentação visual impactante.</p>
+                    <div class="preview-icons">
+                        <span class="icon-tag">Criativo</span>
+                        <span class="icon-tag">Visual</span>
+                    </div>
+                    <a href="Shop Creative Fashion – Creative High-Performance Multi-Purpose WordPress Theme.html" class="model-link">
+                        Visualizar Modelo
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Modelo 5 -->
+            <div class="model-card">
+                <div class="model-preview">
+                    <img src="preview-modelo-5.jpg" alt="Preview Modelo 5 - Premium Minimalista" onerror="this.onerror=null; this.style.display='none';">
+                    <div class="fallback-icon">✨</div>
+                </div>
+                <div class="model-info">
+                    <div class="model-number">Modelo 5</div>
+                    <h2 class="model-title">Premium Minimalista</h2>
+                    <p class="model-description">Design minimalista premium com imagens grandes, tipografia sofisticada e espaçamentos generosos.</p>
+                    <div class="preview-icons">
+                        <span class="icon-tag">Minimalista</span>
+                        <span class="icon-tag">Premium</span>
+                        <span class="icon-tag">Elegante</span>
+                    </div>
+                    <a href="modelo-5-premium-minimalista.html" class="model-link">
+                        Visualizar Modelo
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Modelo 6 -->
+            <div class="model-card">
+                <div class="model-preview">
+                    <img src="preview-modelo-6.jpg" alt="Preview Modelo 6 - Modern Grid" onerror="this.onerror=null; this.style.display='none';">
+                    <div class="fallback-icon">🎯</div>
+                </div>
+                <div class="model-info">
+                    <div class="model-number">Modelo 6</div>
+                    <h2 class="model-title">Modern Grid</h2>
+                    <p class="model-description">Layout em grid moderno com cards sofisticados, animações sutis e hover effects profissionais.</p>
+                    <div class="preview-icons">
+                        <span class="icon-tag">Moderno</span>
+                        <span class="icon-tag">Grid</span>
+                        <span class="icon-tag">Interativo</span>
+                    </div>
+                    <a href="modelo-6-modern-grid.html" class="model-link">
+                        Visualizar Modelo
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Modelo 7 -->
+            <div class="model-card">
+                <div class="model-preview">
+                    <img src="preview-modelo-7.jpg" alt="Preview Modelo 7 - Magazine Style" onerror="this.onerror=null; this.style.display='none';">
+                    <div class="fallback-icon">📰</div>
+                </div>
+                <div class="model-info">
+                    <div class="model-number">Modelo 7</div>
+                    <h2 class="model-title">Magazine Style</h2>
+                    <p class="model-description">Layout estilo revista com seções grandes, storytelling visual e tipografia editorial elegante.</p>
+                    <div class="preview-icons">
+                        <span class="icon-tag">Editorial</span>
+                        <span class="icon-tag">Elegante</span>
+                        <span class="icon-tag">Storytelling</span>
+                    </div>
+                    <a href="modelo-7-magazine-style.html" class="model-link">
+                        Visualizar Modelo
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Modelo 8 -->
+            <div class="model-card">
+                <div class="model-preview">
+                    <img src="preview-modelo-8.jpg" alt="Preview Modelo 8 - Dashboard Style" onerror="this.onerror=null; this.style.display='none';">
+                    <div class="fallback-icon">⚙️</div>
+                </div>
+                <div class="model-info">
+                    <div class="model-number">Modelo 8</div>
+                    <h2 class="model-title">Dashboard Style</h2>
+                    <p class="model-description">Layout com sidebar, filtros avançados, busca integrada e experiência de usuário premium.</p>
+                    <div class="preview-icons">
+                        <span class="icon-tag">Dashboard</span>
+                        <span class="icon-tag">Filtros</span>
+                        <span class="icon-tag">Avançado</span>
+                    </div>
+                    <a href="modelo-8-dashboard-style.html" class="model-link">
+                        Visualizar Modelo
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

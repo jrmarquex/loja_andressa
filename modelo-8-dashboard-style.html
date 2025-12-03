@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Style - Roupas Profissionais Médicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #111827;
+            --secondary: #ffffff;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #f9fafb;
+            --sidebar-bg: #ffffff;
+            --border: #e5e7eb;
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Header Dashboard */
+        .header-dashboard {
+            background: var(--secondary);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-top-bar {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 10px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+        
+        .header-main-dashboard {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+        
+        .logo-dashboard {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .search-bar {
+            flex: 1;
+            max-width: 600px;
+            margin: 0 40px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px 12px 50px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+        
+        .header-actions-dashboard {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .action-btn {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            border-radius: 12px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            background: var(--accent);
+            color: var(--secondary);
+        }
+        
+        .action-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            color: var(--secondary);
+            border-radius: 50%;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        /* Layout Dashboard */
+        .dashboard-layout {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: var(--sidebar-bg);
+            border-radius: 16px;
+            padding: 30px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+        
+        .filter-group {
+            margin-bottom: 32px;
+        }
+        
+        .filter-group-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .filter-options {
+            list-style: none;
+        }
+        
+        .filter-option {
+            margin-bottom: 12px;
+        }
+        
+        .filter-option label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+        
+        .filter-option label:hover {
+            color: var(--accent);
+        }
+        
+        .filter-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--accent);
+        }
+        
+        .price-range {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        
+        .price-input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .btn-filter {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent);
+            color: var(--secondary);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .btn-filter:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+        
+        /* Main Content */
+        .main-content {
+            background: var(--secondary);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .content-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .results-count {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+        
+        .view-options {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .view-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .view-btn.active {
+            background: var(--accent);
+            color: var(--secondary);
+            border-color: var(--accent);
+        }
+        
+        /* Products Grid Dashboard */
+        .products-grid-dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .product-card-dashboard {
+            background: var(--bg);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .product-card-dashboard:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .product-image-dashboard {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            background: var(--bg);
+        }
+        
+        .product-image-dashboard img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card-dashboard:hover .product-image-dashboard img {
+            transform: scale(1.1);
+        }
+        
+        .product-badge-dashboard {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 6px 12px;
+            background: var(--accent);
+            color: var(--secondary);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .quick-actions {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-card-dashboard:hover .quick-actions {
+            opacity: 1;
+        }
+        
+        .quick-action-btn {
+            width: 36px;
+            height: 36px;
+            background: var(--secondary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .quick-action-btn:hover {
+            background: var(--accent);
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        .product-info-dashboard {
+            padding: 20px;
+        }
+        
+        .product-category-dashboard {
+            font-size: 12px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .product-name-dashboard {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+        
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .product-price-dashboard {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .product-rating-dashboard {
+            color: #fbbf24;
+            font-size: 14px;
+        }
+        
+        .btn-add-cart {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: var(--secondary);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-add-cart:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer Dashboard */
+        footer {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 60px 30px 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-dashboard {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-brand-dashboard {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-text-dashboard {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+        
+        .footer-title-dashboard {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links-dashboard {
+            list-style: none;
+        }
+        
+        .footer-links-dashboard li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links-dashboard a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links-dashboard a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-bottom-dashboard {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 1200px) {
+            .dashboard-layout {
+                grid-template-columns: 240px 1fr;
+            }
+            
+            .products-grid-dashboard {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 968px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+            
+            .search-bar {
+                display: none;
+            }
+            
+            .products-grid-dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-dashboard {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-dashboard">
+        <div class="header-top-bar">
+            🎉 Oferta Especial: 20% OFF em toda a loja | Use o cupom: MEDICO20
+        </div>
+        <div class="header-main-dashboard">
+            <div class="logo-dashboard">MediShop</div>
+            <div class="search-bar">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Buscar produtos...">
+            </div>
+            <div class="header-actions-dashboard">
+                <div class="action-btn">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="action-badge">3</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Dashboard Layout -->
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Filtros</h2>
+            
+            <div class="filter-group">
+                <h3 class="filter-group-title">Categorias</h3>
+                <ul class="filter-options">
+                    <li class="filter-option">
+                        <label>
+                            <input type="checkbox">
+                            <span>Médicos</span>
+                        </label>
+                    </li>
+                    <li class="filter-option">
+                        <label>
+                            <input type="checkbox">
+                            <span>Enfermeiros</span>
+                        </label>
+                    </li>
+                    <li class="filter-option">
+                        <label>
+                            <input type="checkbox">
+                            <span>Biomédicos</span>
+                        </label>
+                    </li>
+                    <li class="filter-option">
+                        <label>
+                            <input type="checkbox">
+                            <span>Dentistas</span>
+                        </label>
+                    </li>
+                    <li class="filter-option">
+                        <label>
+                            <input type="checkbox">
+                            <span>Veterinários</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="filter-group">
+                <h3 class="filter-group-title">Preço</h3>
+                <div class="price-range">
+                    <input type="number" class="price-input" placeholder="Min" value="0">
+                    <input type="number" class="price-input" placeholder="Max" value="500">
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <h3 class="filter-group-title">Tamanho</h3>
+                <ul class="filter-options">
+                    <li class="filter-option">
+                        <label>
+                            <input type="checkbox">
+                            <span>P</span>
+                        </label>
+                    </li>
+                    <li class="filter-option">
+                        <label>
+                            <input type="checkbox">
+                            <span>M</span>
+                        </label>
+                    </li>
+                    <li class="filter-option">
+                        <label>
+                            <input type="checkbox">
+                            <span>G</span>
+                        </label>
+                    </li>
+                    <li class="filter-option">
+                        <label>
+                            <input type="checkbox">
+                            <span>GG</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            
+            <button class="btn-filter">Aplicar Filtros</button>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1 class="content-title">Nossos Produtos</h1>
+                    <p class="results-count">Mostrando 24 produtos</p>
+                </div>
+                <div class="view-options">
+                    <div class="view-btn active">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <div class="view-btn">
+                        <i class="fas fa-list"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="products-grid-dashboard">
+                <a href="modelo-8-produto-1.html" class="product-card-dashboard" style="text-decoration: none; color: inherit;">
+                    <div class="product-image-dashboard">
+                        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80" alt="Jaleco">
+                        <span class="product-badge-dashboard">Novo</span>
+                        <div class="quick-actions">
+                            <div class="quick-action-btn" onclick="event.preventDefault();">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <a href="modelo-8-produto-1.html" class="quick-action-btn" style="text-decoration: none; color: inherit;">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info-dashboard">
+                        <div class="product-category-dashboard">Jalecos</div>
+                        <h3 class="product-name-dashboard">Jaleco Médico Premium</h3>
+                        <div class="product-meta">
+                            <div class="product-price-dashboard">R$ 249,90</div>
+                            <div class="product-rating-dashboard">★★★★★</div>
+                        </div>
+                        <button class="btn-add-cart" onclick="event.preventDefault();">Adicionar ao Carrinho</button>
+                    </div>
+                </a>
+                
+                <a href="modelo-8-produto-2.html" class="product-card-dashboard" style="text-decoration: none; color: inherit;">
+                    <div class="product-image-dashboard">
+                        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=600&q=80" alt="Uniforme">
+                        <div class="quick-actions">
+                            <div class="quick-action-btn" onclick="event.preventDefault();">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <a href="modelo-8-produto-2.html" class="quick-action-btn" style="text-decoration: none; color: inherit;">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info-dashboard">
+                        <div class="product-category-dashboard">Uniformes</div>
+                        <h3 class="product-name-dashboard">Uniforme Enfermagem</h3>
+                        <div class="product-meta">
+                            <div class="product-price-dashboard">R$ 189,90</div>
+                            <div class="product-rating-dashboard">★★★★☆</div>
+                        </div>
+                        <button class="btn-add-cart" onclick="event.preventDefault();">Adicionar ao Carrinho</button>
+                    </div>
+                </a>
+                
+                <a href="modelo-8-produto-3.html" class="product-card-dashboard" style="text-decoration: none; color: inherit;">
+                    <div class="product-image-dashboard">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" alt="Biomédico">
+                        <span class="product-badge-dashboard">Mais Vendido</span>
+                        <div class="quick-actions">
+                            <div class="quick-action-btn" onclick="event.preventDefault();">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <a href="modelo-8-produto-3.html" class="quick-action-btn" style="text-decoration: none; color: inherit;">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info-dashboard">
+                        <div class="product-category-dashboard">Jalecos</div>
+                        <h3 class="product-name-dashboard">Jaleco Biomédico</h3>
+                        <div class="product-meta">
+                            <div class="product-price-dashboard">R$ 219,90</div>
+                            <div class="product-rating-dashboard">★★★★★</div>
+                        </div>
+                        <button class="btn-add-cart" onclick="event.preventDefault();">Adicionar ao Carrinho</button>
+                    </div>
+                </a>
+                
+                <a href="modelo-8-produto-4.html" class="product-card-dashboard" style="text-decoration: none; color: inherit;">
+                    <div class="product-image-dashboard">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80" alt="Avental">
+                        <div class="quick-actions">
+                            <div class="quick-action-btn" onclick="event.preventDefault();">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <a href="modelo-8-produto-4.html" class="quick-action-btn" style="text-decoration: none; color: inherit;">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info-dashboard">
+                        <div class="product-category-dashboard">Aventais</div>
+                        <h3 class="product-name-dashboard">Avental Hospitalar</h3>
+                        <div class="product-meta">
+                            <div class="product-price-dashboard">R$ 159,90</div>
+                            <div class="product-rating-dashboard">★★★★☆</div>
+                        </div>
+                        <button class="btn-add-cart" onclick="event.preventDefault();">Adicionar ao Carrinho</button>
+                    </div>
+                </a>
+                
+                <a href="modelo-8-produto-5.html" class="product-card-dashboard" style="text-decoration: none; color: inherit;">
+                    <div class="product-image-dashboard">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&q=80" alt="Cirúrgica">
+                        <div class="quick-actions">
+                            <div class="quick-action-btn" onclick="event.preventDefault();">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <a href="modelo-8-produto-5.html" class="quick-action-btn" style="text-decoration: none; color: inherit;">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info-dashboard">
+                        <div class="product-category-dashboard">Cirúrgicas</div>
+                        <h3 class="product-name-dashboard">Roupa Cirúrgica</h3>
+                        <div class="product-meta">
+                            <div class="product-price-dashboard">R$ 279,90</div>
+                            <div class="product-rating-dashboard">★★★★★</div>
+                        </div>
+                        <button class="btn-add-cart" onclick="event.preventDefault();">Adicionar ao Carrinho</button>
+                    </div>
+                </a>
+                
+                <a href="modelo-8-produto-6.html" class="product-card-dashboard" style="text-decoration: none; color: inherit;">
+                    <div class="product-image-dashboard">
+                        <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&q=80" alt="Veterinário">
+                        <div class="quick-actions">
+                            <div class="quick-action-btn" onclick="event.preventDefault();">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <a href="modelo-8-produto-6.html" class="quick-action-btn" style="text-decoration: none; color: inherit;">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info-dashboard">
+                        <div class="product-category-dashboard">Veterinários</div>
+                        <h3 class="product-name-dashboard">Jaleco Veterinário</h3>
+                        <div class="product-meta">
+                            <div class="product-price-dashboard">R$ 239,90</div>
+                            <div class="product-rating-dashboard">★★★★☆</div>
+                        </div>
+                        <button class="btn-add-cart" onclick="event.preventDefault();">Adicionar ao Carrinho</button>
+                    </div>
+                </a>
+                
+                <a href="modelo-8-produto-7.html" class="product-card-dashboard" style="text-decoration: none; color: inherit;">
+                    <div class="product-image-dashboard">
+                        <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&q=80" alt="Dentista">
+                        <span class="product-badge-dashboard">Oferta</span>
+                        <div class="quick-actions">
+                            <div class="quick-action-btn" onclick="event.preventDefault();">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <a href="modelo-8-produto-7.html" class="quick-action-btn" style="text-decoration: none; color: inherit;">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info-dashboard">
+                        <div class="product-category-dashboard">Dentistas</div>
+                        <h3 class="product-name-dashboard">Jaleco Dentista</h3>
+                        <div class="product-meta">
+                            <div class="product-price-dashboard">R$ 229,90</div>
+                            <div class="product-rating-dashboard">★★★★★</div>
+                        </div>
+                        <button class="btn-add-cart" onclick="event.preventDefault();">Adicionar ao Carrinho</button>
+                    </div>
+                </a>
+                
+                <a href="modelo-8-produto-8.html" class="product-card-dashboard" style="text-decoration: none; color: inherit;">
+                    <div class="product-image-dashboard">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Pijama">
+                        <div class="quick-actions">
+                            <div class="quick-action-btn" onclick="event.preventDefault();">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <a href="modelo-8-produto-8.html" class="quick-action-btn" style="text-decoration: none; color: inherit;">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info-dashboard">
+                        <div class="product-category-dashboard">Pijamas</div>
+                        <h3 class="product-name-dashboard">Pijama Cirúrgico</h3>
+                        <div class="product-meta">
+                            <div class="product-price-dashboard">R$ 169,90</div>
+                            <div class="product-rating-dashboard">★★★★☆</div>
+                        </div>
+                        <button class="btn-add-cart" onclick="event.preventDefault();">Adicionar ao Carrinho</button>
+                    </div>
+                </a>
+                
+                <a href="modelo-8-produto-9.html" class="product-card-dashboard" style="text-decoration: none; color: inherit;">
+                    <div class="product-image-dashboard">
+                        <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80" alt="Calça">
+                        <div class="quick-actions">
+                            <div class="quick-action-btn" onclick="event.preventDefault();">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <a href="modelo-8-produto-9.html" class="quick-action-btn" style="text-decoration: none; color: inherit;">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-info-dashboard">
+                        <div class="product-category-dashboard">Calças</div>
+                        <h3 class="product-name-dashboard">Calça Profissional</h3>
+                        <div class="product-meta">
+                            <div class="product-price-dashboard">R$ 139,90</div>
+                            <div class="product-rating-dashboard">★★★★★</div>
+                        </div>
+                        <button class="btn-add-cart" onclick="event.preventDefault();">Adicionar ao Carrinho</button>
+                    </div>
+                </a>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-dashboard">
+            <div>
+                <div class="footer-brand-dashboard">MediShop</div>
+                <p class="footer-text-dashboard">
+                    Sua loja especializada em roupas profissionais para área médica. 
+                    Qualidade, conforto e estilo em cada peça.
+                </p>
+            </div>
+            <div>
+                <h4 class="footer-title-dashboard">Produtos</h4>
+                <ul class="footer-links-dashboard">
+                    <li><a href="#">Jalecos</a></li>
+                    <li><a href="#">Uniformes</a></li>
+                    <li><a href="#">Aventais</a></li>
+                    <li><a href="#">Roupas Cirúrgicas</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title-dashboard">Empresa</h4>
+                <ul class="footer-links-dashboard">
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title-dashboard">Suporte</h4>
+                <ul class="footer-links-dashboard">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Trocas</a></li>
+                    <li><a href="#">Frete</a></li>
+                    <li><a href="#">Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-dashboard">
+            <p>&copy; 2024 MediShop. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

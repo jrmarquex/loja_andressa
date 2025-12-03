@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Grid - Roupas Profissionais Médicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #ffffff;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #f8fafc;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Header Moderno */
+        .header-modern {
+            background: var(--secondary);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 12px 0;
+            font-size: 13px;
+            text-align: center;
+        }
+        
+        .header-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 90px;
+        }
+        
+        .logo-modern {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--primary);
+        }
+        
+        .nav-modern {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-modern a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-modern a:hover {
+            color: var(--accent);
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .icon-btn {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            border-radius: 10px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .icon-btn:hover {
+            background: var(--accent);
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 18px;
+            height: 18px;
+            background: var(--accent);
+            color: var(--secondary);
+            border-radius: 50%;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            margin-bottom: 100px;
+        }
+        
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(59, 130, 246, 0.6) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--secondary);
+            padding: 40px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-title {
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .btn-modern {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 40px;
+            background: var(--accent);
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-modern:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 25px 30px -5px rgba(59, 130, 246, 0.4);
+        }
+        
+        /* Products Grid Moderno */
+        .products-modern {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px 100px;
+        }
+        
+        .section-title-modern {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .section-subtitle-modern {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 18px;
+            margin-bottom: 60px;
+        }
+        
+        .products-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card-modern {
+            background: var(--secondary);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .product-card-modern a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .product-card-modern:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .product-image-modern {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            background: var(--bg);
+        }
+        
+        .product-image-modern img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .product-card-modern:hover .product-image-modern img {
+            transform: scale(1.1);
+        }
+        
+        .product-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-card-modern:hover .product-overlay {
+            opacity: 1;
+        }
+        
+        .overlay-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .overlay-btn:hover {
+            background: var(--accent);
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        .product-badge-modern {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 8px 16px;
+            background: var(--accent);
+            color: var(--secondary);
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .product-info-modern {
+            padding: 24px;
+        }
+        
+        .product-category-modern {
+            font-size: 12px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .product-name-modern {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        
+        .product-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .product-price-modern {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .product-rating {
+            color: #fbbf24;
+            font-size: 14px;
+        }
+        
+        /* Features Grid */
+        .features-modern {
+            background: var(--secondary);
+            padding: 80px 40px;
+            margin-top: 100px;
+        }
+        
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 32px;
+            color: var(--secondary);
+        }
+        
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .feature-text {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+        
+        /* Footer Moderno */
+        footer {
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 80px 40px 40px;
+        }
+        
+        .footer-modern {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-brand-modern {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+        
+        .footer-text {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+        
+        .footer-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-bottom-modern {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        @media (max-width: 1024px) {
+            .products-grid-modern {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-modern {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-modern {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 42px;
+            }
+            
+            .products-grid-modern {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-modern {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-modern">
+        <div class="header-top">
+            Frete grátis para compras acima de R$ 300 | Entrega rápida em todo Brasil
+        </div>
+        <div class="header-main">
+            <div class="logo-modern">MediPro</div>
+            <nav>
+                <ul class="nav-modern">
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Produtos</a></li>
+                    <li><a href="#">Categorias</a></li>
+                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <div class="icon-btn">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="icon-btn">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="icon-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge">3</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1400&q=80" alt="Roupas Médicas">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1 class="hero-title">Roupas Profissionais que Inspiram Confiança</h1>
+                <p class="hero-subtitle">
+                    Qualidade superior, design moderno e conforto incomparável para profissionais da saúde
+                </p>
+                <a href="#" class="btn-modern">
+                    Ver Coleção Completa
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products -->
+    <section class="products-modern">
+        <h2 class="section-title-modern">Nossos Produtos</h2>
+        <p class="section-subtitle-modern">
+            Explore nossa seleção cuidadosa de roupas profissionais
+        </p>
+        
+        <div class="products-grid-modern">
+            <a href="modelo-6-produto-1.html" class="product-card-modern">
+                <div class="product-image-modern">
+                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&q=80" alt="Jaleco">
+                    <div class="product-overlay">
+                        <a href="modelo-6-produto-1.html" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-heart"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-shopping-bag"></i></a>
+                    </div>
+                    <span class="product-badge-modern">Novo</span>
+                </div>
+                <div class="product-info-modern">
+                    <div class="product-category-modern">Jalecos</div>
+                    <h3 class="product-name-modern">Jaleco Médico Premium</h3>
+                    <div class="product-price-row">
+                        <div class="product-price-modern">R$ 249,90</div>
+                        <div class="product-rating">★★★★★</div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="modelo-6-produto-2.html" class="product-card-modern">
+                <div class="product-image-modern">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=800&q=80" alt="Uniforme">
+                    <div class="product-overlay">
+                        <a href="modelo-6-produto-2.html" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-heart"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+                <div class="product-info-modern">
+                    <div class="product-category-modern">Uniformes</div>
+                    <h3 class="product-name-modern">Uniforme Enfermagem</h3>
+                    <div class="product-price-row">
+                        <div class="product-price-modern">R$ 189,90</div>
+                        <div class="product-rating">★★★★☆</div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="modelo-6-produto-3.html" class="product-card-modern">
+                <div class="product-image-modern">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=80" alt="Jaleco Biomédico">
+                    <div class="product-overlay">
+                        <a href="modelo-6-produto-3.html" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-heart"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-shopping-bag"></i></a>
+                    </div>
+                    <span class="product-badge-modern">Mais Vendido</span>
+                </div>
+                <div class="product-info-modern">
+                    <div class="product-category-modern">Jalecos</div>
+                    <h3 class="product-name-modern">Jaleco Biomédico</h3>
+                    <div class="product-price-row">
+                        <div class="product-price-modern">R$ 219,90</div>
+                        <div class="product-rating">★★★★★</div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="modelo-6-produto-4.html" class="product-card-modern">
+                <div class="product-image-modern">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80" alt="Avental">
+                    <div class="product-overlay">
+                        <a href="modelo-6-produto-4.html" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-heart"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+                <div class="product-info-modern">
+                    <div class="product-category-modern">Aventais</div>
+                    <h3 class="product-name-modern">Avental Hospitalar</h3>
+                    <div class="product-price-row">
+                        <div class="product-price-modern">R$ 159,90</div>
+                        <div class="product-rating">★★★★☆</div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="modelo-6-produto-5.html" class="product-card-modern">
+                <div class="product-image-modern">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&q=80" alt="Cirúrgica">
+                    <div class="product-overlay">
+                        <a href="modelo-6-produto-5.html" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-heart"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+                <div class="product-info-modern">
+                    <div class="product-category-modern">Cirúrgicas</div>
+                    <h3 class="product-name-modern">Roupa Cirúrgica</h3>
+                    <div class="product-price-row">
+                        <div class="product-price-modern">R$ 279,90</div>
+                        <div class="product-rating">★★★★★</div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="modelo-6-produto-6.html" class="product-card-modern">
+                <div class="product-image-modern">
+                    <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&q=80" alt="Veterinário">
+                    <div class="product-overlay">
+                        <a href="modelo-6-produto-6.html" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-heart"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+                <div class="product-info-modern">
+                    <div class="product-category-modern">Veterinários</div>
+                    <h3 class="product-name-modern">Jaleco Veterinário</h3>
+                    <div class="product-price-row">
+                        <div class="product-price-modern">R$ 239,90</div>
+                        <div class="product-rating">★★★★☆</div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="modelo-6-produto-7.html" class="product-card-modern">
+                <div class="product-image-modern">
+                    <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80" alt="Jaleco Dentista">
+                    <div class="product-overlay">
+                        <a href="modelo-6-produto-7.html" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-heart"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-shopping-bag"></i></a>
+                    </div>
+                    <span class="product-badge-modern">Oferta</span>
+                </div>
+                <div class="product-info-modern">
+                    <div class="product-category-modern">Dentistas</div>
+                    <h3 class="product-name-modern">Jaleco Dentista</h3>
+                    <div class="product-price-row">
+                        <div class="product-price-modern">R$ 229,90</div>
+                        <div class="product-rating">★★★★★</div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="modelo-6-produto-8.html" class="product-card-modern">
+                <div class="product-image-modern">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Pijama Cirúrgico">
+                    <div class="product-overlay">
+                        <a href="modelo-6-produto-8.html" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-heart"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+                <div class="product-info-modern">
+                    <div class="product-category-modern">Pijamas</div>
+                    <h3 class="product-name-modern">Pijama Cirúrgico</h3>
+                    <div class="product-price-row">
+                        <div class="product-price-modern">R$ 169,90</div>
+                        <div class="product-rating">★★★★☆</div>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="modelo-6-produto-9.html" class="product-card-modern">
+                <div class="product-image-modern">
+                    <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=800&q=80" alt="Calça Profissional">
+                    <div class="product-overlay">
+                        <a href="modelo-6-produto-9.html" class="overlay-btn"><i class="fas fa-eye"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-heart"></i></a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+                <div class="product-info-modern">
+                    <div class="product-category-modern">Calças</div>
+                    <h3 class="product-name-modern">Calça Profissional</h3>
+                    <div class="product-price-row">
+                        <div class="product-price-modern">R$ 139,90</div>
+                        <div class="product-rating">★★★★★</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Features -->
+    <section class="features-modern">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3 class="feature-title">Frete Grátis</h3>
+                <p class="feature-text">Para compras acima de R$ 300 em todo Brasil</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">↩️</div>
+                <h3 class="feature-title">Troca Fácil</h3>
+                <p class="feature-text">30 dias para trocar ou devolver</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Compra Segura</h3>
+                <p class="feature-text">Seus dados protegidos e criptografados</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3 class="feature-title">Parcelamento</h3>
+                <p class="feature-text">Até 12x sem juros no cartão</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-modern">
+            <div>
+                <div class="footer-brand-modern">MediPro</div>
+                <p class="footer-text">
+                    Sua loja especializada em roupas profissionais para área médica. 
+                    Qualidade, conforto e estilo em cada peça.
+                </p>
+            </div>
+            <div>
+                <h4 class="footer-title">Produtos</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Jalecos</a></li>
+                    <li><a href="#">Uniformes</a></li>
+                    <li><a href="#">Aventais</a></li>
+                    <li><a href="#">Roupas Cirúrgicas</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Empresa</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Suporte</h4>
+                <ul class="footer-links">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Trocas</a></li>
+                    <li><a href="#">Frete</a></li>
+                    <li><a href="#">Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-modern">
+            <p>&copy; 2024 MediPro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
